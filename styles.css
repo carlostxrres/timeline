@@ -1,0 +1,71 @@
+:root {
+    --tl-border-size: 1px;
+    --tl-color-border: gray;
+    --tl-color-text: #666;
+    --year-height: 2rem;
+}
+
+body {
+    margin: 5rem;
+    padding: 5rem;
+    font-family: Amazon Ember;
+}
+
+/**/
+tl-timeline {
+    display: grid;
+    grid-template-columns: repeat(25, 1fr);
+    border: var(--tl-border-size) solid var(--tl-color-border);
+    display: none;
+}
+
+tl-month {
+    padding-block: .25rem;
+    text-align: center;
+    color: var(--tl-color-text);
+    position: relative;
+}
+
+tl-month:nth-child(even) {
+    background-color: #ddd;
+}
+
+tl-month:nth-child(odd) {
+    background-color: #eee;
+}
+
+tl-month:not(:last-child) {
+    border-right: var(--tl-border-size) solid var(--tl-color-border);
+}
+
+/*  both */
+tl-month[data-month="january"]:not(:first-child):before,
+tl-marker {    
+    position: absolute;
+    line-height: var(--year-height);
+    padding-inline: .5rem;
+    border-style: solid;
+    border-width: 0;
+}
+
+/* year */
+tl-month[data-month="january"]:not(:first-child):before {
+    inset: calc(-1 * var(--year-height)) auto 0 calc(-1 * var(--tl-border-size));
+    border-color: var(--tl-color-border);
+    border-left-width: 3px;
+    
+    content: attr(data-year);
+    font-weight: 700;
+}
+
+/* marker */
+tl-marker {
+    inset: 0 auto calc(-1 * var(--year-height)) auto;
+    border-color: rgb(128, 128, 128, .2);
+    border-left-width: 2px;
+    
+    display: flex;
+    align-items: end;
+}
+
+/**/
