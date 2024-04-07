@@ -6,6 +6,7 @@ This aims to be a little library to create simple but accurate (to a millisecond
 
 - [ ] Make this work with pointers.
 - [ ] Make this work with ranges.
+- [ ] Migrate to TypeScript.
 - [ ] Turn this into a class with its constructor.
 - [ ] Add methods:
   - [ ] To add events.
@@ -34,7 +35,7 @@ An instance of this should receive the following parameters:
         <td>Events</td>
         <td>Date points and date ranges to be represented and the data associated to each.</td>
         <td>
-            An object with two entries:
+            An array of objects with these entries:
             <ul>
                 <li><code>date</code>: a date (parseable to Date and mandatory)</li>
                 <li><code>name</code>: text to be shown in the label (string and optional).</li>
