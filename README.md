@@ -32,7 +32,7 @@ An instance of this should receive the following parameters:
     </tr>
     <tr>
         <td>Events</td>
-        <td>Punctual dates to be represented and the data associated to each.</td>
+        <td>Date points and date ranges to be represented and the data associated to each.</td>
         <td>
             An object with two entries:
             <ul>
@@ -41,7 +41,7 @@ An instance of this should receive the following parameters:
                 <li><code>endDate</code>: the end date, if the current event is a range of dates rather than a point in the time (parseable to Date and optional).</li>
             </ul>
         </td>
-        <td>Yes</td>
+        <td>Yes.</td>
     </tr>
     <tr>
         <td>Unit</td>
