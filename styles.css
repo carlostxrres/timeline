@@ -1,71 +1,76 @@
 :root {
-    --tl-border-size: 1px;
-    --tl-color-border: gray;
-    --tl-color-text: #666;
-    --year-height: 2rem;
+    --t-color-border: gray;
+    --t-color-marker: rgba(255, 0, 0, 0.2);
+    --t-color-text: #666;
+    --t-border-size: 1px;
+    --t-bone-border: var(--t-border-size) solid var(--t-color-border);
+    --t-label-height: 2rem;
 }
 
 body {
     margin: 5rem;
     padding: 5rem;
-    font-family: Amazon Ember;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/**/
-tl-timeline {
-    display: grid;
-    grid-template-columns: repeat(25, 1fr);
-    border: var(--tl-border-size) solid var(--tl-color-border);
-    display: none;
-}
-
-tl-month {
-    padding-block: .25rem;
-    text-align: center;
-    color: var(--tl-color-text);
+t-skeleton {
+    display: block;
+    width: 100%;
     position: relative;
 }
 
-tl-month:nth-child(even) {
+t-bone {
+    position: absolute;
+    border-left: var(--t-bone-border);
+    padding-block: .25rem;
+    text-align: center;
+    color: var(--t-color-text);
+}
+
+t-bone:last-child {
+    border-right: var(--t-bone-border);
+}
+
+t-bone:nth-child(even) {
     background-color: #ddd;
 }
 
-tl-month:nth-child(odd) {
+t-bone:nth-child(odd) {
     background-color: #eee;
 }
 
-tl-month:not(:last-child) {
-    border-right: var(--tl-border-size) solid var(--tl-color-border);
-}
+/* Labels */
 
-/*  both */
-tl-month[data-month="january"]:not(:first-child):before,
-tl-marker {    
+/* skeleton & marker labels */
+t-bone[data-t-name="1"]:not(:first-child):before,
+t-bone[data-t-name="January"]:not(:first-child):before,
+t-marker {
     position: absolute;
-    line-height: var(--year-height);
+    line-height: var(--t-label-height);
     padding-inline: .5rem;
     border-style: solid;
     border-width: 0;
 }
 
-/* year */
-tl-month[data-month="january"]:not(:first-child):before {
-    inset: calc(-1 * var(--year-height)) auto 0 calc(-1 * var(--tl-border-size));
-    border-color: var(--tl-color-border);
+/* skeleton labels */
+t-bone[data-t-name="1"]:not(:first-child):before,
+t-bone[data-t-name="January"]:not(:first-child):before {
+    inset: calc(-1 * var(--t-label-height)) auto 0 calc(-1 * var(--t-border-size));
+    border-color: var(--t-color-border);
     border-left-width: 3px;
-    
-    content: attr(data-year);
+
+    content: attr(data-t-greater-name);
     font-weight: 700;
 }
 
-/* marker */
-tl-marker {
-    inset: 0 auto calc(-1 * var(--year-height)) auto;
-    border-color: rgb(128, 128, 128, .2);
+/* marker labels */
+t-marker {
+    /* inset: 0 auto calc(-1 * var(--t-label-height)) auto; */
+    border-color: var(--t-color-marker);
     border-left-width: 2px;
-    
+
     display: flex;
     align-items: end;
+    /* To do: adjust padding-top to the skeleton height */
+    padding-top: 2rem;
 }
-
-/**/
