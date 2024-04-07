@@ -42,21 +42,22 @@ function createSkeleton(unit, milestoneData) {
 function createPointLabels(milestoneData) {
   // To do: show also a readable date in the label
   const skeleton = getSkeletonNode()
-  const points = EVENTS.map((event) => {
-    const limitMilestones = getLimitDates(milestoneData)
-    const startPercentage =
-      ((event.date - limitMilestones.first) /
-        (limitMilestones.last - limitMilestones.first)) *
-      100
-    return (
-      "" +
-      `<t-marker` +
-      ` data-t-name="${event.name || ""}"` +
-      ` style="left: ${startPercentage}%;"` +
-      `>${event.name || ""}</t-marker>`
-    )
-  })
-  skeleton.innerHTML += points.join("")
+  skeleton.innerHTML += EVENTS
+    .map((event) => {
+      const limitMilestones = getLimitDates(milestoneData)
+      const startPercentage =
+        ((event.date - limitMilestones.first) /
+          (limitMilestones.last - limitMilestones.first)) *
+        100
+      return (
+        "" +
+        `<t-marker` +
+        ` data-t-name="${event.name || ""}"` +
+        ` style="left: ${startPercentage}%;"` +
+        `>${event.name || ""}</t-marker>`
+      )
+    })
+    .join("")
 }
 
 // Then: add ranges functionality
