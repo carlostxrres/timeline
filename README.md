@@ -20,7 +20,167 @@ This aims to be a little library to create simple but accurate (to a millisecond
 - [ ] Keep a minified version of the library.
 - [ ] Make demo with UI
 
-## Constructor
+## Usage
+
+### Installation
+
+```html
+<script src="https://cdn.jsdelivr.net/some-slugs.js"></script>
+```
+
+### Basic usage
+
+```html
+<div id="timeline"></div>
+<script>
+  const events = [
+    { date: "2021-01-01", name: "Event 1" },
+    { date: "2021-01-02", name: "Event 2" },
+    { date: "2021-01-03", name: "Event 3" },
+    { date: "2021-01-04", name: "Event 4" },
+    { date: "2021-01-05", name: "Event 5" },
+    { date: "2021-01-06", name: "Event 6" },
+    { date: "2021-01-07", name: "Event 7" },
+    { date: "2021-01-08", name: "Event 8" },
+    { date: "2021-01-09", name: "Event 9" },
+    { date: "2021-01-10", name: "Event 10" },
+  ]
+  const timeline = new Timeline({ events })
+  document.getElementById("timeline").innerHTML = timeline.render()
+</script>
+```
+
+### Advanced usage
+
+```html
+<div id="timeline"></div>
+
+<script>
+  const timeline = new Timeline({
+    events: [
+      { date: "2021-01-01", name: "Event 1" },
+      { date: "2021-01-02", name: "Event 2" },
+      { date: "2021-01-03", name: "Event 3" },
+      { date: "2021-01-04", name: "Event 4" },
+      { date: "2021-01-05", name: "Event 5" },
+      { date: "2021-01-06", name: "Event 6" },
+      { date: "2021-01-07", name: "Event 7" },
+      { date: "2021-01-08", name: "Event 8" },
+      { date: "2021-01-09", name: "Event 9" },
+      { date: "2021-01-10", name: "Event 10" },
+    ],
+    unit: "day",
+    language: "es-ES",
+    customStyles: {
+      timeline: {
+        backgroundColor: "black",
+        color: "white",
+      },
+      label: {
+        backgroundColor: "black",
+        color: "white",
+      },
+    },
+  })
+  document.getElementById("timeline").innerHTML = timeline.render()
+</script>
+```
+
+## API
+
+### Methods
+
+#### `render()`
+
+Returns the timeline as an HTML string.
+
+```javascript
+const timeline = new Timeline({ events })
+document.getElementById("timeline").innerHTML = timeline.render()
+```
+
+#### `renderSVG()`
+
+Returns the timeline as an SVG string.
+
+```javascript
+const timeline = new Timeline({ events })
+document.getElementById("timeline").innerHTML = timeline.renderSVG()
+```
+
+#### `addEvent(event)`
+
+Adds an event to the timeline.
+
+```javascript
+const timeline = new Timeline({ events })
+timeline.addEvent({ date: "2021-01-11", name: "Event 11" })
+```
+
+#### `removeEvent(index)`
+
+Removes an event from the timeline.
+
+```javascript
+const timeline = new Timeline({ events })
+timeline.removeEvent(11)
+```
+
+#### `setUnit(unit)`
+
+Changes the unit of the timeline.
+
+```javascript
+const timeline = new Timeline({ events })
+timeline.setUnit("hour")
+```
+
+#### `setLanguage(language)`
+
+Changes the language of the timeline.
+
+```javascript
+const timeline = new Timeline({ events })
+timeline.setLanguage("es-ES")
+```
+
+#### `setCustomStyles(customStyles)`
+
+Changes the custom styles of the timeline.
+
+```javascript
+const timeline = new Timeline({ events })
+timeline.setCustomStyles({
+  timeline: {
+    backgroundColor: "black",
+    color: "white",
+  },
+  label: {
+    backgroundColor: "black",
+    color: "white",
+  },
+})
+```
+
+#### `setLabelContent(content)`
+
+Changes the content of the label.
+
+```javascript
+const timeline = new Timeline({ events })
+timeline.setLabelContent("date")
+```
+
+#### `setLabelFormat(format)`
+
+Changes the format of the date in the label.
+
+```javascript
+const timeline = new Timeline({ events })
+timeline.setLabelFormat("yyyy-MM-dd")
+```
+
+## `Constructor`
 
 An instance of this should receive the following parameters:
 
