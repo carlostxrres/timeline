@@ -4,7 +4,7 @@ This aims to be a little library to create simple but accurate (to a millisecond
 
 ## To do
 
-- [ ] Make this work with pointers.
+- [x] Make this work with pointers.
 - [ ] Make this work with ranges.
 - [ ] Migrate to TypeScript.
 - [ ] Turn this into a class with its constructor.
