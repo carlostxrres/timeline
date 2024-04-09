@@ -70,7 +70,18 @@ t-marker {
     border-left-width: 2px;
 
     display: flex;
-    align-items: end;
+    flex-direction: column;
+    gap: .5rem;
     /* To do: adjust padding-top to the skeleton height */
     padding-top: 2rem;
+
+    font-size: .8rem;
+    line-height: normal;
+
+}
+
+/* Markers */
+.event-date {
+    font-weight: 600;
+    color: #666;
 }

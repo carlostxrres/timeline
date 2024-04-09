@@ -22,3 +22,7 @@ const EVENTS = [
 ]
 const COUNTRY = "en-US"
 const USER_UNIT = "auto" // or let the user decide: "month", "day"... (from millisecond to year)
+const MARKER_DATE_OPTIONS = "auto" // or let the user decide: "none", or a custom format like { month: "short", day: "numeric", }
+
+const PADDING_UNITS_START = 3
+const PADDING_UNITS_END = 2

@@ -7,7 +7,8 @@ createPointLabels(milestoneData)
 
 function createSkeleton(unit, milestoneData) {
   const dtfOption = OPTIONS_BY_UNIT[unit]
-  const greaterUnitDtfOption = getGreaterUnitDtfOption(unit)
+  const greaterUnit = moveToUnit(unit, -1)
+  const greaterUnitDtfOption = OPTIONS_BY_UNIT[greaterUnit]
 
   const skeleton = getSkeletonNode()
   skeleton.innerHTML = milestoneData
@@ -24,7 +25,6 @@ function createSkeleton(unit, milestoneData) {
         : ""
 
       return (
-        "" +
         `<t-bone` +
         ` data-t-unit="${unit}"` +
         ` data-t-name="${name}"` +
@@ -42,22 +42,29 @@ function createSkeleton(unit, milestoneData) {
 function createPointLabels(milestoneData) {
   // To do: show also a readable date in the label
   const skeleton = getSkeletonNode()
-  skeleton.innerHTML += EVENTS
-    .map((event) => {
-      const limitMilestones = getLimitDates(milestoneData)
-      const startPercentage =
-        ((event.date - limitMilestones.first) /
-          (limitMilestones.last - limitMilestones.first)) *
-        100
-      return (
-        "" +
-        `<t-marker` +
-        ` data-t-name="${event.name || ""}"` +
-        ` style="left: ${startPercentage}%;"` +
-        `>${event.name || ""}</t-marker>`
-      )
-    })
-    .join("")
+  skeleton.innerHTML += EVENTS.map((event) => {
+    const limitMilestones = getLimitDates(milestoneData)
+    const startPercentage =
+      ((event.date - limitMilestones.first) /
+        (limitMilestones.last - limitMilestones.first)) *
+      100
+
+    const markerDateOptions = getMarkerDateOptions(unit)
+    const displayName = event.name || ""
+    const displayDate = new Date(event.date).toLocaleDateString(
+      COUNTRY,
+      markerDateOptions
+    )
+    return (
+      `<t-marker` +
+      ` data-t-time="${event.date}"` +
+      ` style="left: ${startPercentage}%;"` +
+      `>` +
+      /**/ `<div class="event-date">${displayDate}</div>` +
+      /**/ `<div class="event-name">${displayName}</div>` +
+      `</t-marker>`
+    )
+  }).join("")
 }
 
 // Then: add ranges functionality

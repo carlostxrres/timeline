@@ -10,6 +10,7 @@ const TIME_UNITS = [
   "millisecond",
 ]
 
+// to do: make this more elegant
 const OPTIONS_BY_UNIT = {
   year: { year: "numeric" },
   month: { month: "long" },
@@ -19,3 +20,13 @@ const OPTIONS_BY_UNIT = {
   second: { second: "numeric" },
   millisecond: { millisecond: "numeric" },
 }
+
+const LABEL_OPTIONS_BY_UNIT = [
+  ["year", "numeric"],
+  ["month", "short"],
+  ["day", "numeric"],
+  ["hour", "numeric"],
+  ["minute", "numeric"],
+  ["second", "numeric"],
+  ["millisecond", "numeric"],
+]
