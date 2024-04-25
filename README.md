@@ -1,9 +1,11 @@
-⚠️ This README is under construction ⚠️
+> [!WARNING]
+> This project is is under construction️
 
 This aims to be a little library to create simple but accurate (to a millisecond level) timelines, given a set of events.
 
 ## To do
 
+- [ ] Change API: each label has its own display options. It can be in/above/below the line, in position 1/2/3/... from the line, have different texts or custom styles.
 - [x] Make this work with pointers.
 - [ ] Make this work with ranges.
 - [ ] Migrate to TypeScript.
