@@ -1,5 +1,5 @@
 > [!WARNING]
-> This project is is under construction️
+> This project is under construction️
 
 This aims to be a little library to create simple but accurate (to a millisecond level) timelines, given a set of events.
 
